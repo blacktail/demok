@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>好学园</title>
+    <script src="./js/jquery-3.1.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/com.css"></link>
+    <link rel="stylesheet" type="text/css" href="./css/project.css"></link>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"></link>
+</head>
+<body>
+<div class="left-nav-wrap">
+    <div class="user-info">
+        <div class="avatar"><img src="./img/avatar.png"></div>
+        <div class="info">
+            <div class="name ng-binding">admin</div>
+            <div class="name"><a href="/manage_logout">注 销</a></div>
+        </div>
+    </div>
+    <ul class="menu-list">
+        <li><a href="./index.html"><i class="iconfont icon-1"></i><em>我的桌面</em></a></li>
+        <li><a href="./notice.html"><i class="iconfont icon-bell"></i><em>通知公告</em></a></li>
+        <li><a href="./friend.html"><i class="iconfont icon-4"></i><em>学生圈</em></a></li>
+        <li class="on"><a href="./office.html"><i class="iconfont icon-2"></i><em>办公服务</em></a></li>
+        <li><a href="./myclass.html"><i class="iconfont icon-3"></i><em>我的班级</em></a></li>
+    </ul>
+</div>
+
+<div class="page-main-wrap" ng-class="{'fold':mainStatus.navFold}">
+    <!-- ngView:  --><div ng-view="" autoscroll="true" class="ng-scope"><div ng-controller="pageCtrl" class="ng-scope">
+    <div class="top-nav-wrap">
+        <div class="title fl">
+            办公服务
+        </div>
+    </div>
+    <div class="page-main">
+            <div class="fl">
+                <div class="h-item">
+                    <div class="h-item-icon">
+                    </div>
+                    <div class="h-item-img">
+                        <a href="#/listen-list3.html"><img class="h-item-img2" src="./img/0425-17.png" alt="#"></a>
+                    </div>
+                    <a href="#/listen-list3.html" class="btn"><em>听课申请</em></a>
+                </div>
+            </div>
+            <div class="fl">
+                <div class="h-item">
+                    <div class="h-item-icon">
+                    </div>
+                    <div class="h-item-img">
+                        <a href="#/teachingActivities-list3.html"><img class="h-item-img2" src="./img/0425-17.png" alt="#"></a>
+                    </div>
+                    <a href="#/teachingActivities-list3.html" class="btn"><em>教研活动申请</em></a>
+                </div>
+            </div>
+            <div class="fl">
+                <div class="h-item">
+                    <div class="h-item-icon">
+                    </div>
+                    <div class="h-item-img">
+                        <a href="#/bonusItems-list.html"><img class="h-item-img2" src="./img/0425-17.png" alt="#"></a>
+                    </div>
+                    <a href="#/bonusItems-list.html" class="btn"><em>加分项目</em></a>
+                </div>
+            </div>
+            <div class="fl">
+                <div class="h-item">
+                    <div class="h-item-icon">
+                        <i ng-show="1" class="h-item-icon2">1</i>
+                    </div>
+                    <div class="h-item-img">
+                        <a href="#/overTime-list3.html"><img class="h-item-img2" src="./img/0425-18.png" alt="#"></a>
+                    </div>
+                    <a href="#/overTime-list3.html" class="btn"><em>请假、加班申请</em></a>
+                </div>
+            </div>
+            <div class="fl">
+                <div class="h-item">
+                    <div class="h-item-icon">
+                        <i ng-show="1" class="h-item-icon2">1</i>
+                    </div>
+                    <div class="h-item-img">
+                        <a href="#/reimbursement-list3.html"><img class="h-item-img2" src="./img/0425-23.png" alt="#"></a>
+                    </div>
+                    <a href="#/reimbursement-list3.html" class="btn"><em>报销申请</em></a>
+                </div>
+            </div>
+    </div>
+
+</div></div>
+</div>
+
+<script src="./js/common.js"></script>
+<script>
+    $('#work-handle').on('click', function () {
+        $('#work-list').slideToggle('fast');
+    });
+</script>
+</body>
+</html>

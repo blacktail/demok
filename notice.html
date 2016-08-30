@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>好学园</title>
+    <script src="./js/jquery-3.1.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/com.css"></link>
+    <link rel="stylesheet" type="text/css" href="./css/project.css"></link>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"></link>
+</head>
+<body>
+<div class="left-nav-wrap">
+    <div class="user-info">
+        <div class="avatar"><img src="./img/avatar.png"></div>
+        <div class="info">
+            <div class="name ng-binding">admin</div>
+            <div class="name"><a href="/manage_logout">注 销</a></div>
+        </div>
+    </div>
+    <ul class="menu-list">
+        <li><a href="./index.html"><i class="iconfont icon-1"></i><em>我的桌面</em></a></li>
+        <li class="on"><a href="./notice.html"><i class="iconfont icon-bell"></i><em>通知公告</em></a></li>
+        <li><a href="./friend.html"><i class="iconfont icon-4"></i><em>学生圈</em></a></li>
+        <li><a href="./office.html"><i class="iconfont icon-2"></i><em>办公服务</em></a></li>
+        <li><a href="./myclass.html"><i class="iconfont icon-3"></i><em>我的班级</em></a></li>
+    </ul>
+</div>
+
+
+<div class="page-main-wrap" ng-class="{'fold':mainStatus.navFold}">
+    <!-- ngView:  --><div ng-view="" autoscroll="true" class="ng-scope"><div ng-controller="pageCtrl" class="ng-scope">
+    <div class="top-nav-wrap">
+        <div class="title fl">
+            通知公告
+        </div>
+    </div>
+    <div class="page-main">
+            <div class="fl">
+                <div class="h-item">
+                    <div class="h-item-icon">
+                        <i ng-show="number" class="h-item-icon2 ng-binding ng-hide" style="display:none;"></i>
+                    </div>
+                    <div class="h-item-img">
+                        <a href="#/sendNotice.html"><img class="h-item-img2" src="./img/0425-27.png" alt="#"></a>
+                    </div>
+                    <a href="#/sendNotice.html" class="btn"><em>发送通知</em></a>
+                </div>
+            </div>
+            <div class="fl">
+                <div class="h-item">
+                    <div class="h-item-icon">
+                        <i ng-show="number" class="h-item-icon2 ng-hide">10</i>
+                    </div>
+                    <div class="h-item-img">
+                        <a href="#/receiveNotice2.html"><img class="h-item-img2" src="./img/0425-28.png" alt="#"></a>
+                    </div>
+                    <a href="#/receiveNotice2.html" class="btn"><em>收到通知</em></a>
+                </div>
+            </div>
+            <div class="fl">
+                <div class="h-item">
+                    <div class="h-item-icon">
+                        <i ng-show="number" class="h-item-icon2 ng-hide">1</i>
+                    </div>
+                    <div class="h-item-img">
+                        <a href="#/sentNotice.html"><img class="h-item-img2" src="./img/0425-19.png" alt="#"></a>
+                    </div>
+                    <a href="#/sentNotice.html" class="btn"><em>已发通知</em></a>
+                </div>
+            </div>
+    </div>
+
+</div></div>
+</div>
+
+
+<script src="./js/common.js"></script>
+<script>
+    $('#work-handle').on('click', function () {
+        $('#work-list').slideToggle('fast');
+    });
+</script>
+</body>
+</html>
