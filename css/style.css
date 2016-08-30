@@ -1,0 +1,9 @@
+.left-nav-wrap ul li a:hover {
+    background: #0076FF;
+    color: #FFF;
+}
+
+.to-process-application {
+    color: red;
+    cursor: pointer;
+}

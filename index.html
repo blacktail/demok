@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>好学园</title>
+    <script src="./js/jquery-3.1.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/com.css"></link>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"></link>
+</head>
+<body>
+    <div class="left-nav-wrap">
+        <div class="user-info">
+            <div class="avatar"><img src="./img/avatar.png"></div>
+            <div class="info">
+                <div class="name ng-binding">admin</div>
+                <div class="name"><a href="/manage_logout">注 销</a></div>
+            </div>
+        </div>
+        <ul class="menu-list">
+            <li class="on"><a href="./index.html"><i class="iconfont icon-1"></i><em>我的桌面</em></a></li>
+            <li><a href="./notice.html"><i class="iconfont icon-bell"></i><em>通知公告</em></a></li>
+            <li><a href="./friend.html"><i class="iconfont icon-4"></i><em>学生圈</em></a></li>
+            <li><a href="./office.html"><i class="iconfont icon-2"></i><em>办公服务</em></a></li>
+            <li><a href="./myclass.html"><i class="iconfont icon-3"></i><em>我的班级</em></a></li>
+        </ul>
+    </div>
+
+    <div class="page-main-wrap">
+        <div autoscroll="true" class="ng-scope"><link rel="stylesheet" href="../../css/tipso.min.css" class="ng-scope">
+        <style class="ng-scope">
+            .tipso_style {
+                border-bottom: none
+            }
+
+            #tips4, #tips3 {
+                cursor: pointer
+            }
+        </style>
+        <script src="../../js/tipso.min.js" class="ng-scope"></script>
+        <script class="ng-scope">
+            $(function () {
+                $('#tips3').tipso({
+                    background: '#23527C',
+                    width: '100px'
+                });
+                $('#tips4').tipso({
+                    background: '#23527C',
+                    width: '150px'
+                });
+            });
+        </script>
+        <div ng-controller="pageCtrl" class="ng-scope">
+            <div class="top-nav-wrap">
+                <div class="right">
+                    <div class="nav">
+                        <a class="li tipso_style ng-isolate-scope" id="tips3" modal-right="750" modal-scope="this" modal-url="../views/j/app-load.html"><i class="iconfont icon-down"></i></a>
+                        <a class="li tipso_style ng-isolate-scope" id="tips4" modal-right="750" modal-scope="this" modal-url="../views/j/SystemProblem.html"><i class="iconfont icon-help"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="page-main">
+                <div class="col-group">
+                    <div class="col-8">
+                        <div class="project-auth ng-scope" details-info="/views/j/workbench/detail">
+                            <div class="list ng-scope" ng-init="current={}">
+                                <!-- ngRepeat: auth in details.authList --><div ng-repeat="auth in details.authList" class="ng-scope">
+                                <div class="li" ng-class="{on:current.show==$index}" ng-click="current.show=(current.show==$index?-1:$index);">
+                                    <div class="col col-1 ng-binding">通知</div>
+                                    <div class="col col-2 ng-binding">2</div>
+                                    <div class="col col-3 ng-binding">个通知</div>
+                                </div>
+                                <!-- ngIf: current.show==$index -->
+                            </div><!-- end ngRepeat: auth in details.authList --><div ng-repeat="auth in details.authList" class="ng-scope">
+                                <div class="li" ng-class="{on:current.show==$index}" ng-click="current.show=(current.show==$index?-1:$index);">
+                                    <div class="col col-1 ng-binding">消息</div>
+                                    <div class="col col-2 ng-binding">0</div>
+                                    <div class="col col-3 ng-binding">个消息</div>
+                                </div>
+                                <!-- ngIf: current.show==$index -->
+                            </div><!-- end ngRepeat: auth in details.authList --><div ng-repeat="auth in details.authList" class="ng-scope">
+                                <div id="work-handle" class="li" ng-class="{on:current.show==$index}" ng-click="current.show=(current.show==$index?-1:$index);">
+                                    <div class="col col-1 ng-binding">办公</div>
+                                    <div class="col col-2 ng-binding">5</div>
+                                    <div class="col col-3 ng-binding">个申请</div>
+                                </div>
+
+                                <div id="work-list" class="li-sub ng-scope" ng-if="current.show==$index">
+                                    <!--id为1代表成绩异常-->
+                                    <!-- ngIf: auth.id==1 -->
+                                    <!--id为2代表德育-->
+                                    <!-- ngIf: auth.id==2 -->
+                                    <!--id为3代表出勤-->
+                                    <!-- ngIf: auth.id==3 -->
+                                    <!--id为4代表待办事项-->
+                                    <!-- ngIf: auth.id==4 --><div ng-if="auth.id==4" class="ng-scope">
+                                    <table-list list-data="/views/j/workbench/data?id=4" class="ng-isolate-scope">
+                                        <!-- ngIf: !status.isLoading --><div ng-if="!status.isLoading" class="ng-scope">
+                                        <!-- ngIf: tbodyList.length==0 -->
+                                        <!-- ngIf: tbodyList.length --><div ng-if="tbodyList.length" class="ng-scope">
+                                        <table class="table-list">
+                                            <thead>
+                                            <tr>
+                                                <th>事项类别</th>
+                                                <th>提交人</th>
+                                                <th>提交事项</th>
+                                                <th>提交时间</th>
+                                                <th>&nbsp;</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <!-- ngRepeat: tr in tbodyList -->
+                                            <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=57305caee316325f608240da" class="ng-scope ng-isolate-scope">
+                                                <td class="ng-binding">用车申请</td>
+                                                <td class="ng-binding">张先蓉</td>
+                                                <td class="ng-binding">张先蓉申请8月22日用车</td>
+                                                <td class="ng-binding">2016-05-09 17:47:26</td>
+                                                <td class="to-process-application">去处理</td>
+                                            </tr>
+                                            <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=577384580cf2acf7d458a1a0" class="ng-scope ng-isolate-scope">
+                                                <td class="ng-binding">报销申请</td>
+                                                <td class="ng-binding">李桂莲</td>
+                                                <td class="ng-binding">李老师申请报销8月差旅费</td>
+                                                <td class="ng-binding">2016-06-29 16:18:32</td>
+                                                <td class="to-process-application">去处理</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div><!-- end ngIf: tbodyList.length -->
+                                    </div><!-- end ngIf: !status.isLoading -->
+                                        <!-- ngIf: status.isLoading -->
+                                    </table-list>
+                                </div><!-- end ngIf: auth.id==4 -->
+                                    <!--id为5代表通知-->
+                                    <!-- ngIf: auth.id==5 -->
+                                </div>
+                                <!-- ngIf: current.show==$index -->
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4" style="background: #F2F6FA;margin-top: 20px">
+                        <div class="mg-m">
+                            <span angucomplete="" placeholder="输入教师姓名查询电话号码" title-field="text" url="/teacher/search" class="inline-block ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty" ng-model="formData.name"><div class="angucomplete-holder"><input ng-model="searchStr" type="text" placeholder="输入教师姓名查询电话号码" class="ipt ng-pristine ng-untouched ng-valid ng-empty" onmouseup="this.select();" ng-focus="resetHideResults()" ng-blur="hideResults()" ng-disabled="ngDisabled"><!-- ngIf: showDropdown --></div></span>
+                        </div>
+                        <div class="mg-m">
+                            <div table-calendar="/schedule_management/everyDaySchedule" select-to="#/schedule-management-list.html?date=">
+                                <div date-picker="" class="date-picker-block ng-isolate-scope" view="date" min-view="date" date-month="changeMonth" date-select="dateSelect" status-list="statusList"><!-- ngInclude: template --><div ng-include="template" class="ng-scope"><div ng-switch="view" class="ng-scope"><!-- ngSwitchWhen: date --><div ng-switch-when="date" class="ng-scope"><table><thead><tr><th ng-click="prev()">‹</th><th colspan="5" class="switch ng-binding" ng-click="setView('month')" ng-bind="date|mFormat:'YYYY MMMM':tz">2016 八月</th><th ng-click="next()">›</th></tr><tr><!-- ngRepeat: day in weekdays --><th ng-repeat="day in weekdays" style="overflow: hidden" ng-bind="day|mFormat:'ddd':tz" class="ng-binding ng-scope">日</th><!-- end ngRepeat: day in weekdays --><th ng-repeat="day in weekdays" style="overflow: hidden" ng-bind="day|mFormat:'ddd':tz" class="ng-binding ng-scope">一</th><!-- end ngRepeat: day in weekdays --><th ng-repeat="day in weekdays" style="overflow: hidden" ng-bind="day|mFormat:'ddd':tz" class="ng-binding ng-scope">二</th><!-- end ngRepeat: day in weekdays --><th ng-repeat="day in weekdays" style="overflow: hidden" ng-bind="day|mFormat:'ddd':tz" class="ng-binding ng-scope">三</th><!-- end ngRepeat: day in weekdays --><th ng-repeat="day in weekdays" style="overflow: hidden" ng-bind="day|mFormat:'ddd':tz" class="ng-binding ng-scope">四</th><!-- end ngRepeat: day in weekdays --><th ng-repeat="day in weekdays" style="overflow: hidden" ng-bind="day|mFormat:'ddd':tz" class="ng-binding ng-scope">五</th><!-- end ngRepeat: day in weekdays --><th ng-repeat="day in weekdays" style="overflow: hidden" ng-bind="day|mFormat:'ddd':tz" class="ng-binding ng-scope">六</th><!-- end ngRepeat: day in weekdays --></tr></thead><tbody><!-- ngRepeat: week in weeks --><tr ng-repeat="week in weeks" ng-init="$index2 = $index" class="ng-scope"><!-- ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope disabled">31</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">01</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">02</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">03</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">04</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">05</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">06</span></td><!-- end ngRepeat: day in week --></tr><!-- end ngRepeat: week in weeks --><tr ng-repeat="week in weeks" ng-init="$index2 = $index" class="ng-scope"><!-- ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">07</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">08</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">09</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">10</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">11</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">12</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">13</span></td><!-- end ngRepeat: day in week --></tr><!-- end ngRepeat: week in weeks --><tr ng-repeat="week in weeks" ng-init="$index2 = $index" class="ng-scope"><!-- ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">14</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">15</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">16</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">17</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">18</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">19</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">20</span></td><!-- end ngRepeat: day in week --></tr><!-- end ngRepeat: week in weeks --><tr ng-repeat="week in weeks" ng-init="$index2 = $index" class="ng-scope"><!-- ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">21</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">22</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">23</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">24</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">25</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">26</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">27</span></td><!-- end ngRepeat: day in week --></tr><!-- end ngRepeat: week in weeks --><tr ng-repeat="week in weeks" ng-init="$index2 = $index" class="ng-scope"><!-- ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">28</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">29</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope active now">30</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope">31</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope disabled">01</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope disabled">02</span></td><!-- end ngRepeat: day in week --><td ng-repeat="day in week" class="ng-scope"><span ng-class="classes[$index2][$index]" ng-click="selectDate(day)" ng-bind="day|mFormat:'DD':tz" date-popover="statusList[day.format('YYYYMMDD')]" class="ng-binding ng-isolate-scope disabled">03</span></td><!-- end ngRepeat: day in week --></tr><!-- end ngRepeat: week in weeks --></tbody></table></div><!-- end ngSwitchWhen: --><!-- ngSwitchWhen: year --><!-- ngSwitchWhen: month --><!-- ngSwitchWhen: hours --><!-- ngSwitchWhen: minutes --></div></div></div>
+                            </div>
+                        </div>
+                        <div class="mg-m">
+                            <span style="height: 20px;width: 60px;border: 2px solid red;display: inline-block">&nbsp;</span>
+                            <span style="font-size: 15px;vertical-align: middle;height: 20px;margin-right: 40px">过期事项</span>
+
+                            <span style="height: 20px;width: 60px;background-color: green;display: inline-block">&nbsp;</span>
+                            <span style="font-size: 15px;vertical-align: middle;height:20px;display: inline-block">日程提醒</span>
+                        </div>
+                        <div class="mgb-m">常用业务</div>
+                        <div class="mg-m">
+                            <a href="#/class/toInputScore" class="btn btn-s mgt-s"><em>录入成绩</em></a>
+                            <!--班主任可使用该功能-->
+                            <a modal-right="720" modal-scope="this" modal-url="/morning_check/toAdd" class="btn btn-s mgt-s ng-isolate-scope">晨检管理</a>
+                            <a modal-right="720" modal-scope="this" modal-url="/moralEducation/toAdd" class="btn btn-s mgt-s ng-isolate-scope">德育管理</a>
+                        </div>
+                        <div class="mgb-m">常用流程</div>
+                        <div class="mg-m">
+                            <a href="#" modal-right="720" modal-scope="this" modal-url="/teacher_leave/toAll" class="btn btn-blue mgt-s ng-isolate-scope">请假加班申请</a>
+                            <a href="#" modal-right="720" modal-scope="this" modal-url="/asset_maintenance/toAdd" class="btn btn-blue mgt-s ng-isolate-scope">查看通知</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+    <script src="./js/common.js"></script>
+    <script>
+        $('#work-handle').on('click', function () {
+            $('#work-list').slideToggle('fast');
+        });
+    </script>
+</body>
+</html>
