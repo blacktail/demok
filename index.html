@@ -6,6 +6,9 @@
     <script src="./js/jquery-3.1.0.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/com.css"></link>
     <link rel="stylesheet" type="text/css" href="./css/style.css"></link>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-theme.min.css"></link>
+    <script src="./bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
     <div class="left-nav-wrap">
@@ -26,7 +29,7 @@
     </div>
 
     <div class="page-main-wrap">
-        <div autoscroll="true" class="ng-scope"><link rel="stylesheet" href="../../css/tipso.min.css" class="ng-scope">
+        <div autoscroll="true" class="ng-scope">
         <style class="ng-scope">
             .tipso_style {
                 border-bottom: none
@@ -36,21 +39,13 @@
                 cursor: pointer
             }
         </style>
-        <script src="../../js/tipso.min.js" class="ng-scope"></script>
         <script class="ng-scope">
-            $(function () {
-                $('#tips3').tipso({
-                    background: '#23527C',
-                    width: '100px'
-                });
-                $('#tips4').tipso({
-                    background: '#23527C',
-                    width: '150px'
-                });
-            });
         </script>
         <div ng-controller="pageCtrl" class="ng-scope">
             <div class="top-nav-wrap">
+                <div style="font-size: 18px;">
+                    廖杨老师, 午后一番小憩, 换回百分精神
+                </div>
                 <div class="right">
                     <div class="nav">
                         <a class="li tipso_style ng-isolate-scope" id="tips3" modal-right="750" modal-scope="this" modal-url="../views/j/app-load.html"><i class="iconfont icon-down"></i></a>
@@ -64,11 +59,38 @@
                         <div class="project-auth ng-scope" details-info="/views/j/workbench/detail">
                             <div class="list ng-scope" ng-init="current={}">
                                 <!-- ngRepeat: auth in details.authList --><div ng-repeat="auth in details.authList" class="ng-scope">
-                                <div class="li" ng-class="{on:current.show==$index}" ng-click="current.show=(current.show==$index?-1:$index);">
+                                <div id="notice-handle" class="li" ng-class="{on:current.show==$index}" ng-click="current.show=(current.show==$index?-1:$index);">
                                     <div class="col col-1 ng-binding">通知</div>
                                     <div class="col col-2 ng-binding">2</div>
                                     <div class="col col-3 ng-binding">个通知</div>
                                 </div>
+
+                                <div id="notice-list" class="li-sub ng-scope" ng-if="current.show==$index">
+                                <table class="table-list">
+                                    <thead>
+                                    <tr>
+                                        <th>主题</th>
+                                        <th>时间</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!-- ngRepeat: tr in tbodyList -->
+                                    <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=57305caee316325f608240da" class="ng-scope ng-isolate-scope">
+                                        <td class="ng-binding">关于我校新生军训的通知</td>
+                                        <td class="ng-binding">2016-05-09 17:47:26</td>
+                                        <td class="to-process-application" id="process1">去处理</td>
+                                    </tr>
+                                    <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=577384580cf2acf7d458a1a0" class="ng-scope ng-isolate-scope">
+                                        <td class="ng-binding">关于申请5月车补的补充通知</td>
+                                        <td class="ng-binding">2016-06-29 16:18:32</td>
+                                        <td class="to-process-application" id="process2">去处理</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+
+
                                 <!-- ngIf: current.show==$index -->
                             </div><!-- end ngRepeat: auth in details.authList --><div ng-repeat="auth in details.authList" class="ng-scope">
                                 <div class="li" ng-class="{on:current.show==$index}" ng-click="current.show=(current.show==$index?-1:$index);">
@@ -80,7 +102,7 @@
                             </div><!-- end ngRepeat: auth in details.authList --><div ng-repeat="auth in details.authList" class="ng-scope">
                                 <div id="work-handle" class="li" ng-class="{on:current.show==$index}" ng-click="current.show=(current.show==$index?-1:$index);">
                                     <div class="col col-1 ng-binding">办公</div>
-                                    <div class="col col-2 ng-binding">5</div>
+                                    <div class="col col-2 ng-binding">2</div>
                                     <div class="col col-3 ng-binding">个申请</div>
                                 </div>
 
@@ -176,12 +198,62 @@
 
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="notice1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">查看通知</h4>
+                </div>
+                <div class="modal-body">
+                   <div>
+                       <div>
+                           <h3 style="text-align:center;">关于我校新生军训的通知</h3>
+                           <p style="margin:30px 0;">尊敬的家长、亲爱的同学：
+
+                               经学校研究决定，本学年度初、高中新生军训工作如期举行，为保证本次军训工作顺利开展，确保学生身心健康，克服持续高温影响，特对新生军训做了如下安排：
+
+                               军训时间：
+
+                               上午7:30—10:30；晚上18:30—21:30。其余时间将安排在室内进行国防教育、学前教育、内务整理等。
+
+                               食堂将针对天气情况，营养配餐，使其饮食合理，并提供充足饮用水。
+
+                               寝室和教室保持二十四小时空调开放和热水供应。</p>
+                           <div>
+                               <div style="text-align:right;">成都市实验外国语学校（西区)</div>
+                               <div style="text-align:right;">2016年8月21日</div>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">标记为已读</button>
+                    <button type="button" class="btn btn-primary" id="resent-notice">转发此通知</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">稍后处理</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="./js/common.js"></script>
     <script>
         $('#work-handle').on('click', function () {
             $('#work-list').slideToggle('fast');
+        });
+
+        $('#notice-handle').on('click', function () {
+            $('#notice-list').slideToggle('fast');
+        });
+
+        $('#process1, #process2').on('click', function () {
+            $('#notice1').modal();
+        });
+
+        $('#resent-notice').on('click', function () {
+            window.location = 'notice.html?from=resent';
         });
     </script>
 </body>

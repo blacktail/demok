@@ -7,6 +7,39 @@
     <link rel="stylesheet" type="text/css" href="./css/com.css"></link>
     <link rel="stylesheet" type="text/css" href="./css/project.css"></link>
     <link rel="stylesheet" type="text/css" href="./css/style.css"></link>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap-theme.min.css"></link>
+    <script src="./bootstrap/js/bootstrap.js"></script>
+    <style>
+        #send-notice-modal table th {
+            width: 100px;
+            vertical-align: top;
+            padding: 10px 0;
+        }
+        #send-notice-modal table td {
+            vertical-align: top;
+            padding: 10px 0;
+        }
+        #send-notice-modal table td select {
+            width: 150px;
+        }
+        #send-notice-modal table td input {
+            width: 150px;
+        }
+
+        #send-notice-modal table td textarea {
+        }
+        .add-attach {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            vertical-align: middle;
+            background: lightgray;
+            font-size: 36px;
+            padding-top: 18px;
+            color: gray;
+        }
+    </style>
 </head>
 <body>
 <div class="left-nav-wrap">
@@ -43,7 +76,7 @@
                     <div class="h-item-img">
                         <a href="#/sendNotice.html"><img class="h-item-img2" src="./img/0425-27.png" alt="#"></a>
                     </div>
-                    <a href="#/sendNotice.html" class="btn"><em>发送通知</em></a>
+                    <a href="#/sendNotice.html" class="btn" id="send-notice"><em>发送通知</em></a>
                 </div>
             </div>
             <div class="fl">
@@ -74,10 +107,182 @@
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="send-notice-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">发送通知</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#innerschool" aria-controls="home" role="tab" data-toggle="tab">校内通知</a></li>
+                        <li role="presentation"><a href="#outschool" aria-controls="profile" role="tab" data-toggle="tab">家长通知</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="innerschool">
+                            <table>
+                                <tr>
+                                    <th>
+                                        通知类型:
+                                    </th>
+                                    <td>
+                                        <select>
+                                            <option>一般通知</option>
+                                            <option>重要通知</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        收件人:
+                                    </th>
+                                    <td>
+                                        <input placeholder="选择一个...">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        主题:
+                                    </th>
+                                    <td>
+                                        <input placeholder="请输入主题">
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <th>
+                                        添加附件:
+                                    </th>
+                                    <td>
+                                        <div class="add-attach">
+                                            +
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>
+                                        内容:
+                                    </th>
+                                    <td>
+                                        <p >
+                                            尊敬的家长：
+                                        <div contenteditable="true">
+                                            经学校研究决定，本学年度初、高中新生军训工作如期举行，为保证本次军训工作顺利开展，确保学生身心健康，克服持续高温影响，特对新生军训做了如下安排：
+
+                                            军训时间：
+
+                                            上午7:30—10:30；晚上18:30—21:30。其余时间将安排在室内进行国防教育、学前教育、内务整理等。
+
+                                            食堂将针对天气情况，营养配餐，使其饮食合理，并提供充足饮用水。
+
+                                            寝室和教室保持二十四小时空调开放和热水供应
+                                        </div>
+                                        </p>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="outschool">
+
+                            <table>
+                                <tr>
+                                    <th>
+                                        收件人:
+                                    </th>
+                                    <td>
+                                        <select>
+                                            <option>高二(1)班李小然的爸爸</option>
+                                            <option>高三(2)班关洁的妈妈</option>
+                                            <option>...</option>
+                                            <option>...</option>
+                                            <option>...</option>
+                                            <option>...</option>
+                                            <option>...</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        主题:
+                                    </th>
+                                    <td>
+                                        <input placeholder="请输入主题">
+                                    </td>
+
+                                </tr>
+                                <tr>
+
+                                    <th>
+                                        添加附件:
+                                    </th>
+                                    <td>
+                                        <div class="add-attach">
+                                            +
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>
+                                        内容:
+                                    </th>
+                                    <td>
+                                        <p >
+                                        尊敬的家长：
+                                        <div contenteditable="true">
+                                            经学校研究决定，本学年度初、高中新生军训工作如期举行，为保证本次军训工作顺利开展，确保学生身心健康，克服持续高温影响，特对新生军训做了如下安排：
+
+                                            军训时间：
+
+                                            上午7:30—10:30；晚上18:30—21:30。其余时间将安排在室内进行国防教育、学前教育、内务整理等。
+
+                                            食堂将针对天气情况，营养配餐，使其饮食合理，并提供充足饮用水。
+
+                                            寝室和教室保持二十四小时空调开放和热水供应
+                                        </div>
+                                        </p>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">发送</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script src="./js/common.js"></script>
 <script>
     $('#work-handle').on('click', function () {
         $('#work-list').slideToggle('fast');
+    });
+
+    $('#send-notice').on('click', function (e) {
+        e.preventDefault();
+        $('#send-notice-modal').modal();
+    });
+
+    $(document).ready(function () {
+        if (location.search.indexOf('from=resent') > -1) {
+            $('#send-notice-modal').modal();
+        }
     });
 </script>
 </body>
