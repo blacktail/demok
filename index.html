@@ -24,7 +24,7 @@
             <li><a href="./notice.html"><i class="iconfont icon-bell"></i><em>通知公告</em></a></li>
             <li><a href="./friend.html"><i class="iconfont icon-4"></i><em>学生圈</em></a></li>
             <li><a href="./office.html"><i class="iconfont icon-2"></i><em>办公服务</em></a></li>
-            <li><a href="./myclass.html"><i class="iconfont icon-3"></i><em>我的班级</em></a></li>
+            <li><a href="./myclass.html"><i class="iconfont icon-3"></i><em>班级管理</em></a></li>
         </ul>
     </div>
 
@@ -69,8 +69,10 @@
                                 <table class="table-list">
                                     <thead>
                                     <tr>
-                                        <th>主题</th>
-                                        <th>时间</th>
+                                        <th>标题</th>
+                                        <th>发件人</th>
+                                        <th>状态</th>
+                                        <th>发送时间</th>
                                         <th>&nbsp;</th>
                                     </tr>
                                     </thead>
@@ -78,13 +80,24 @@
                                     <!-- ngRepeat: tr in tbodyList -->
                                     <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=57305caee316325f608240da" class="ng-scope ng-isolate-scope">
                                         <td class="ng-binding">关于我校新生军训的通知</td>
+                                        <td>张三</td>
+                                        <td>已查看</td>
                                         <td class="ng-binding">2016-05-09 17:47:26</td>
                                         <td class="to-process-application" id="process1">去处理</td>
                                     </tr>
-                                    <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=577384580cf2acf7d458a1a0" class="ng-scope ng-isolate-scope">
+                                    <tr class="not-process" ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=577384580cf2acf7d458a1a0" class="ng-scope ng-isolate-scope">
                                         <td class="ng-binding">关于申请5月车补的补充通知</td>
+                                        <td>李四</td>
+                                        <td>未处理</td>
                                         <td class="ng-binding">2016-06-29 16:18:32</td>
                                         <td class="to-process-application" id="process2">去处理</td>
+                                    </tr>
+                                    <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=577384580cf2acf7d458a1a0" class="ng-scope ng-isolate-scope">
+                                        <td class="ng-binding">关于申请5月车补的补充通知</td>
+                                        <td>张三</td>
+                                        <td>已转发</td>
+                                        <td class="ng-binding">2016-06-29 16:18:32</td>
+                                        <td class="to-process-application" id="process3">去处理</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -229,9 +242,9 @@
                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">标记为已读</button>
-                    <button type="button" class="btn btn-primary" id="resent-notice">转发此通知</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">稍后处理</button>
+                    <button type="button" class="btn btn-default modal-btn-1" data-dismiss="modal">标记为已读</button>
+                    <button type="button" class="btn btn-primary modal-btn-2" id="resent-notice">转发此通知</button>
+                    <button type="button" class="btn btn-default modal-btn-3" data-dismiss="modal">稍后处理</button>
                 </div>
             </div>
         </div>
@@ -248,8 +261,28 @@
             $('#notice-list').slideToggle('fast');
         });
 
-        $('#process1, #process2').on('click', function () {
+        $('#process1, #process2, #process3').on('click', function (e) {
             $('#notice1').modal();
+
+            var id = e.currentTarget.id;
+
+            if (id == 'process1') {
+                $('.modal-btn-1').show();
+                $('.modal-btn-2').show();
+                $('.modal-btn-1').html('标记为未读');
+                $('.modal-btn-1').addClass('btn-danger');
+                $('.modal-btn-3').hide();
+            } else if (id == 'process2') {
+                $('.modal-btn-1').show().text('标记为已读').removeClass('btn-danger').addClass('btn-success');
+                $('.modal-btn-2').show();
+                $('.modal-btn-3').show();
+            } else if (id == 'process3') {
+                $('.modal-btn-1').hide();
+                $('.modal-btn-2').show();
+                $('.modal-btn-3').hide();
+
+            }
+            console.log(e.currentTarget.id);
         });
 
         $('#resent-notice').on('click', function () {

@@ -56,7 +56,7 @@
         <li class="on"><a href="./notice.html"><i class="iconfont icon-bell"></i><em>通知公告</em></a></li>
         <li><a href="./friend.html"><i class="iconfont icon-4"></i><em>学生圈</em></a></li>
         <li><a href="./office.html"><i class="iconfont icon-2"></i><em>办公服务</em></a></li>
-        <li><a href="./myclass.html"><i class="iconfont icon-3"></i><em>我的班级</em></a></li>
+        <li><a href="./myclass.html"><i class="iconfont icon-3"></i><em>班级管理</em></a></li>
     </ul>
 </div>
 
@@ -88,7 +88,7 @@
                     <div class="h-item-img">
                         <a href="#/receiveNotice2.html"><img class="h-item-img2" src="./img/0425-28.png" alt="#"></a>
                     </div>
-                    <a href="#/receiveNotice2.html" class="btn"><em>收到通知</em></a>
+                    <a href="#/receiveNotice2.html" class="btn receive-notice-btn"><em>收到通知</em></a>
                 </div>
             </div>
             <div class="fl">
@@ -100,6 +100,47 @@
                         <a href="#/sentNotice.html"><img class="h-item-img2" src="./img/0425-19.png" alt="#"></a>
                     </div>
                     <a href="#/sentNotice.html" class="btn"><em>已发通知</em></a>
+                </div>
+            </div>
+
+            <div class="receive-con" style="display:none;">
+                <input type="text" class="search-box form-control" style="width: 300px;margin-bottom: 10px;" placeholder="输入标题模糊查找">
+                <div id="notice-list" class="li-sub ng-scope" ng-if="current.show==$index">
+                    <table class="table-list">
+                        <thead>
+                        <tr>
+                            <th>标题</th>
+                            <th>发件人</th>
+                            <th>状态</th>
+                            <th>发送时间</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- ngRepeat: tr in tbodyList -->
+                        <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=57305caee316325f608240da" class="ng-scope ng-isolate-scope">
+                            <td class="ng-binding">关于我校新生军训的通知</td>
+                            <td>张三</td>
+                            <td>已查看</td>
+                            <td class="ng-binding">2016-05-09 17:47:26</td>
+                            <td class="to-process-application" id="process1">去处理</td>
+                        </tr>
+                        <tr class="not-process" ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=577384580cf2acf7d458a1a0" class="ng-scope ng-isolate-scope">
+                            <td class="ng-binding">关于申请5月车补的补充通知</td>
+                            <td>李四</td>
+                            <td>未处理</td>
+                            <td class="ng-binding">2016-06-29 16:18:32</td>
+                            <td class="to-process-application" id="process2">去处理</td>
+                        </tr>
+                        <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=577384580cf2acf7d458a1a0" class="ng-scope ng-isolate-scope">
+                            <td class="ng-binding">关于申请5月车补的补充通知</td>
+                            <td>张三</td>
+                            <td>已转发</td>
+                            <td class="ng-binding">2016-06-29 16:18:32</td>
+                            <td class="to-process-application" id="process3">去处理</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
     </div>
@@ -269,6 +310,46 @@
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="notice1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">查看通知</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div>
+                        <h3 style="text-align:center;">关于我校新生军训的通知</h3>
+                        <p style="margin:30px 0;">尊敬的家长、亲爱的同学：
+
+                            经学校研究决定，本学年度初、高中新生军训工作如期举行，为保证本次军训工作顺利开展，确保学生身心健康，克服持续高温影响，特对新生军训做了如下安排：
+
+                            军训时间：
+
+                            上午7:30—10:30；晚上18:30—21:30。其余时间将安排在室内进行国防教育、学前教育、内务整理等。
+
+                            食堂将针对天气情况，营养配餐，使其饮食合理，并提供充足饮用水。
+
+                            寝室和教室保持二十四小时空调开放和热水供应。</p>
+                        <div>
+                            <div style="text-align:right;">成都市实验外国语学校（西区)</div>
+                            <div style="text-align:right;">2016年8月21日</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default modal-btn-1" data-dismiss="modal">标记为已读</button>
+                <button type="button" class="btn btn-primary modal-btn-2" id="resent-notice">转发此通知</button>
+                <button type="button" class="btn btn-default modal-btn-3" data-dismiss="modal">稍后处理</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script src="./js/common.js"></script>
 <script>
     $('#work-handle').on('click', function () {
@@ -285,6 +366,50 @@
             $('#send-notice-modal').modal();
         }
     });
+
+    $('.receive-notice-btn').on('click', function () {
+        $('.page-main .fl').hide();
+        $('.receive-con').show();
+
+        $('.title.fl').html('<span class="glyphicon glyphicon-circle-arrow-left back-to-top" aria-hidden="true" style="top:3px;cursor:pointer;"></span> 收到通知');
+
+        $('.back-to-top').on('click', function () {
+            $('.receive-con').hide();
+            $('.page-main .fl').show();
+            $('.title.fl').html('通知公告');
+        });
+    });
+
+
+
+    $('#process1, #process2, #process3').on('click', function (e) {
+        $('#notice1').modal();
+
+        var id = e.currentTarget.id;
+
+        if (id == 'process1') {
+            $('.modal-btn-1').show();
+            $('.modal-btn-2').show();
+            $('.modal-btn-1').html('标记为未读');
+            $('.modal-btn-1').addClass('btn-danger');
+            $('.modal-btn-3').hide();
+        } else if (id == 'process2') {
+            $('.modal-btn-1').show().text('标记为已读').removeClass('btn-danger').addClass('btn-success');
+            $('.modal-btn-2').show();
+            $('.modal-btn-3').show();
+        } else if (id == 'process3') {
+            $('.modal-btn-1').hide();
+            $('.modal-btn-2').show();
+            $('.modal-btn-3').hide();
+
+        }
+        console.log(e.currentTarget.id);
+    });
+
+    $('#resent-notice').on('click', function () {
+        window.location = 'notice.html?from=resent';
+    });
+
 </script>
 </body>
 </html>

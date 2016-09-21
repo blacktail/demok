@@ -4,6 +4,10 @@
 }
 
 .to-process-application {
-    color: red;
     cursor: pointer;
 }
+
+.not-process {
+    color: red;
+}
+
