@@ -99,7 +99,7 @@
                     <div class="h-item-img">
                         <a href="#/sentNotice.html"><img class="h-item-img2" src="./img/0425-19.png" alt="#"></a>
                     </div>
-                    <a href="#/sentNotice.html" class="btn"><em>已发通知</em></a>
+                    <a href="#/sentNotice.html" class="btn sent-notice-btn"><em>已发通知</em></a>
                 </div>
             </div>
 
@@ -143,6 +143,85 @@
                     </table>
                 </div>
             </div>
+
+        <div class="sent-con" style="display:none;">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#innernotice" aria-controls="home" role="tab" data-toggle="tab">校内通知</a></li>
+                <li role="presentation"><a href="#outnotice" aria-controls="profile" role="tab" data-toggle="tab">家长通知</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="innernotice" role="tabpanel" class="tab-pane active">
+                    <div style="margin: 10px 0;">
+                        <input type="text" class="search-box form-control" style="width: 300px;display:inline-block;margin-bottom: 10px;" placeholder="输入标题模糊查找">
+                        <span>输入时间查找</span>
+                        <input type="date">到<input type="date">
+                    </div>
+
+                    <table class="table-list">
+                        <thead>
+                        <tr>
+                            <th>标题</th>
+                            <th>收件人</th>
+                            <th>状态</th>
+                            <th>发送时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- ngRepeat: tr in tbodyList -->
+                        <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=57305caee316325f608240da" class="ng-scope ng-isolate-scope">
+                            <td class="ng-binding">教研活动通知</td>
+                            <td>张三, 李四, 王五等</td>
+                            <td>全部已查看</td>
+                            <td class="ng-binding">2016-07-15 17:47:26</td>
+                        </tr>
+                        <tr class="not-process" ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=577384580cf2acf7d458a1a0" class="ng-scope ng-isolate-scope">
+                            <td class="ng-binding">代课通知</td>
+                            <td>行政组,备课组</td>
+                            <td>5人未查看</td>
+                            <td class="ng-binding">2016-07-01 16:18:32</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="outnotice" role="tabpanel" class="tab-pane">
+                    <div style="margin: 10px 0;">
+                        <input type="text" class="search-box form-control" style="width: 300px;display:inline-block;margin-bottom: 10px;" placeholder="输入标题模糊查找">
+                        <span>输入时间查找</span>
+                        <form action="">
+                            <input type="date">到<input type="date">
+                        </form>
+                    </div>
+
+                    <table class="table-list">
+                        <thead>
+                        <tr>
+                            <th>标题</th>
+                            <th>收件人</th>
+                            <th>发送时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- ngRepeat: tr in tbodyList -->
+                        <tr ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=57305caee316325f608240da" class="ng-scope ng-isolate-scope">
+                            <td class="ng-binding">8月16日作业通知</td>
+                            <td>16级1班全体家长</td>
+                            <td class="ng-binding">2016-05-09 17:47:26</td>
+                        </tr>
+                        <tr class="not-process" ng-repeat="tr in tbodyList" modal-right="800" modal-scope="this" modal-url="/views/j/workbench/toDetail?id=4&amp;parameter=577384580cf2acf7d458a1a0" class="ng-scope ng-isolate-scope">
+                            <td class="ng-binding">中秋节放假通知</td>
+                            <td>16级1班全体家长</td>
+                            <td class="ng-binding">2016-06-29 16:18:32</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
 </div></div>
@@ -369,6 +448,7 @@
 
     $('.receive-notice-btn').on('click', function () {
         $('.page-main .fl').hide();
+        $('.sent-con').hide();
         $('.receive-con').show();
 
         $('.title.fl').html('<span class="glyphicon glyphicon-circle-arrow-left back-to-top" aria-hidden="true" style="top:3px;cursor:pointer;"></span> 收到通知');
@@ -381,6 +461,23 @@
     });
 
 
+    $('.sent-notice-btn').on('click', function () {
+        $('.page-main .fl').hide();
+        $('.receive-con').hide();
+        $('.sent-con').show();
+
+        $('.title.fl').html('<span class="glyphicon glyphicon-circle-arrow-left back-to-top" aria-hidden="true" style="top:3px;cursor:pointer;"></span> 已发通知');
+
+        $('.back-to-top').on('click', function () {
+            $('.sent-con').hide();
+            $('.page-main .fl').show();
+            $('.title.fl').html('通知公告');
+        });
+    });
+
+
+
+    $('.nav-tabs').tab();
 
     $('#process1, #process2, #process3').on('click', function (e) {
         $('#notice1').modal();
